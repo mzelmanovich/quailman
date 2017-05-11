@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "mitchell zelmanovich",
   "license": "MIT",
+  "scripts": {
+    "start:local": "npm run webpack -- -w",
+    "webpack": "./node_modules/webpack/bin/webpack.js"
+  },
   "dependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
