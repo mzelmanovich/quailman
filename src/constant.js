@@ -1,0 +1,5 @@
+export const ADD_PORK_CHOP = 'ADD_PORK_CHOP';
+export const REMOVE_PORK_CHOP = 'REMOVE_PORK_CHOP';
+export const UPDATE_PORK_CHOP = 'UPDATE_PORK_CHOP';
+export const EXECUTE_PORK_CHOP = 'EXECUTE_PORK_CHOP';
+

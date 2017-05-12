@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
+import { Provider, connect} from 'react-redux';
 import PorkChop from './components/PorkChop.jsx';
 
 const root = document.getElementById('root');
