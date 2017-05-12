@@ -1,17 +1,11 @@
-import JSONEditor from 'jsoneditor';
-import ace from 'brace';
-var container = document.getElementById('root');
-var options = {
-  modes: ['text', 'code', 'tree', 'form', 'view'],
-  mode: 'code',
-  ace: ace
+import React from 'react';
+import {render} from 'react-dom';
+import JSONViewer from './components/JSONViewer.jsx';
+
+const root = document.getElementById('root');
+const obj = {
+  test: 123,
+  foo: 'bar'
 };
-var json = {
-  array: [1, 2, 3],
-  boolean: true,
-  null: null,
-  number: 123,
-  object: {a: 'b', c: 'd'},
-  string: 'Hello World'
-};
-var editor = new JSONEditor(container, options, json);
+
+render(<JSONViewer jsonObject={obj} />, root);
