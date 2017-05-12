@@ -21,6 +21,8 @@ const oauth = function oauth({url, key, secret}){
 
 const basic = function basic({username, password}){
   const base64 = new Buffer(`${username}:${password}`).toString('base64');
+	//Note: this will return the header needed for basic Auth
+	//We are making it set up as a oauth response for consitantancy.
   return {token_type: 'basic', access_token: base64};
 };
 
