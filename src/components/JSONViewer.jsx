@@ -41,7 +41,7 @@ class JSONViewer extends Component{
 
   render(){
     return (
-      <div className="col-xs-12 col-md-4 col-lg-4" style={{height: '400px'}}>
+      <div className="col-xs-12 col-md-3 col-lg-3" style={{height: '400px'}}>
         <div ref={(el) => this.domEl = el}  />
       </div>
     );

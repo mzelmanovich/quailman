@@ -34,7 +34,7 @@ class JSEditor extends Component{
     };
 
     return (
-      <div className="col-xs-12 col-md-4 col-lg-4 text-center">
+      <div className="col-xs-12 col-md-6 col-lg-6 text-center">
         <div ref={(el) => {this.domEl = el;}}  />
           <br />
         <button type="button" className="btn btn-success" onClick={exeFunction}>Execute</button>

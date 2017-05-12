@@ -3,15 +3,18 @@ let request = require('request');
 const bluebird = require('bluebird');
 request = bluebird.promisify(request);
 
-const oauth = function({url, key, secret}){
-	 const requestOptions = {
-	 url,
-   headers: {
-	  Authorization: 'Basic ' + new Buffer(`${key}:${secret}`).toString('base64')
-   },
-   formData: {grant_type: 'client_credentials'},
-   method: 'post'
- };
+const oauth = function oauth({url, key, secret}){
+  const base64 = new Buffer(`${key}:${secret}`).toString('base64');
+  const requestOptions = {
+    url,
+    headers: {
+      Authorization: 'Basic ' + base64
+    },
+    formData: {
+      grant_type: 'client_credentials'
+    },
+    method: 'post'
+  };
   return request(requestOptions)
 	.then(({body}) => JSON.parse(body));
 };
