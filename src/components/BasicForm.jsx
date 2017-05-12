@@ -6,9 +6,8 @@ class BasicForm extends Component{
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.post = this.post.bind(this);
     this.state = {
-      key: '',
-      url: '',
-      secret: ''
+      Username: '',
+      Password: ''
     };
   }
 
