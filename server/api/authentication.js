@@ -19,6 +19,11 @@ const oauth = function oauth({url, key, secret}){
 	.then(({body}) => JSON.parse(body));
 };
 
+const basic = function basic({username, password}){
+  const base64 = new Buffer(`${username}:${password}`).toString('base64');
+  return {token_type: 'basic', access_token: base64};
+};
+
 router.post('/oauth', (req, res) => {
   oauth(req.body)
   .then(body => res.json(body))
@@ -28,5 +33,14 @@ router.post('/oauth', (req, res) => {
 router.get('/oauth/function', (req, res) => {
   res.json({func: oauth.toString()});
 });
+
+router.post('/basic', (req, res) => {
+  res.json(basic(req.body));
+});
+
+router.get('/basic', (req, res) => {
+  res.json({func: basic.toString()});
+});
+
 
 module.exports = router;
