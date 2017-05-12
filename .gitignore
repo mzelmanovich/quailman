@@ -64,6 +64,5 @@ typings/
 # ignore bundle
 dist/bundle.js
 dist/bundle.js.map
-dist/test.js
 
 # End of https://www.gitignore.io/api/node

@@ -18,6 +18,10 @@ class JSONViewer extends Component{
     this.viewer = viewer;
   }
 
+  componentDidUpdate(){
+    this.viewer.set(this.props.jsonObject);
+  }
+
   componentWillUnmount(){
     this.viewer = JSONEditor.destroy();
   }
