@@ -37,7 +37,7 @@ class JSONViewer extends Component{
   }
 
   componentWillUnmount(){
-    this.viewer = JSONEditor.destroy();
+    this.viewer.destroy();
   }
 
   render(){
