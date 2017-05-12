@@ -13,12 +13,11 @@ router.post('/function', (req, res) => {
       resolve(fwdfsadfsafasd);
     }
     catch (err){
-      console.log(err);
       reject(err);
     }
   });
   evalProm.then((evalFunc) => {
-    return evalFunc(input);
+    return evalFunc.apply(null, input);
   })
   .then(output => res.json(output))
   .catch(err => res.json({err: err}));
