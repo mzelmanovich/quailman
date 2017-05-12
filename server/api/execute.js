@@ -3,7 +3,6 @@ let request = require('request');
 const bluebird = require('bluebird');
 request = bluebird.promisify(request);
 
-
 router.post('/function', (req, res) => {
   let {func, input} = req.body;
   let evalProm = new Promise((resolve, reject) => {
@@ -13,6 +12,7 @@ router.post('/function', (req, res) => {
       resolve(fwdfsadfsafasd);
     }
     catch (err){
+      console.log(err);
       reject(err);
     }
   });
