@@ -14,7 +14,6 @@ class JSONViewer extends Component{
     const container = this.domEl;
     const options = {
       mode: this.props.mode || 'tree',
-      modes: this.props.modes || ['code', 'tree', 'view'],
       ace,
       onChange: this.onChangeHandler.bind(this)
     };

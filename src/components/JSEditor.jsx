@@ -14,6 +14,7 @@ class JSEditor extends Component{
   componentDidMount(){
     const container = this.domEl;
     this.editor = ace.edit(container);
+    this.editor.$blockScrolling = Infinity;
     this.editor.getSession().setMode('ace/mode/javascript');
     this.editor.setTheme('ace/theme/monokai');
     this.editor.setShowPrintMargin(true);
