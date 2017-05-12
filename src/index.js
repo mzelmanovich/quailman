@@ -1,7 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import JSONViewer from './components/JSONViewer.jsx';
-import JSEditor from './components/JSEditor.jsx';
+import PorkChop from './components/PorkChop.jsx';
 
 const root = document.getElementById('root');
 const obj = {
@@ -9,9 +8,9 @@ const obj = {
   foo: 'bar',
   hi: [0, 1, 2]
 };
+const func =
+`function(){
 
-render(<JSEditor
-startVal={
-  `obj
-  abc
-`} exe={(thing) => console.log(thing)} />, root);
+}`;
+render(<PorkChop
+input={obj} output={obj} startFunction={func} exe={(thing) => console.log(thing)} />, root);

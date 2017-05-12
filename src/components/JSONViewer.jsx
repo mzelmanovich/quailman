@@ -33,7 +33,6 @@ class JSONViewer extends Component{
 
   componentDidUpdate(){
     this.viewer.set(this.props.jsonObject);
-    JSONEditor.setMode(this.props.mode);
   }
 
   componentWillUnmount(){
@@ -41,7 +40,11 @@ class JSONViewer extends Component{
   }
 
   render(){
-    return (<div ref={(el) => this.domEl = el}  />);
+    return (
+      <div className="col-xs-12 col-md-4 col-lg-4" style={{height: '400'}}>
+        <div ref={(el) => this.domEl = el}  />
+      </div>
+    );
   }
 }
 
