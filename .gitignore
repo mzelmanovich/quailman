@@ -61,5 +61,7 @@ typings/
 # dotenv environment variables file
 .env
 
+# ignore bundle
+dist/bundle.js
 
 # End of https://www.gitignore.io/api/node
