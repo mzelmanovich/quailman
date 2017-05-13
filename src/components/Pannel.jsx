@@ -5,7 +5,7 @@ const Pannel = ({children, title}) => {
 <div className="panel panel-default">
   <div className="panel-heading">{title}</div>
   <div className="panel-body">
-    {this.children}
+    {children}
   </div>
 </div>);
 };
