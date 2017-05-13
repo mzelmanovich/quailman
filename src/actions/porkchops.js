@@ -1,7 +1,5 @@
 import axios from 'axios';
-import {ADD_CHOP} from '../constants';
+import {ADD_CHOP, CHANGE_PORK_TYPE} from '../constants';
 
-export const addChop = (chop) => ({chop, type: ADD_CHOP});
-export const makeChop = ({type, startFunction, result}) =>
-
-
+export const addChop = () => ({type: ADD_CHOP});
+export const changeType = (index, porkType) => ({type: CHANGE_PORK_TYPE, index, porkType});

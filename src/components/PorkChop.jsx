@@ -4,12 +4,12 @@ import  JSONViewer from './JSONViewer.jsx';
 import TypePicker from './TypePicker.jsx';
 import Pannel from './Pannel.jsx';
 
-const PorkChop = ({index, chop}) => {
+const PorkChop = ({index, chop, selector}) => {
 
   if (chop.type === 'TypePicker'){
     return (<div className="col-xs-6 col-md-4 col-lg-4">
       <Pannel title={'Chop: ' + (index + 1)}>
-          <TypePicker index={index} />
+          <TypePicker index={index} selector={selector} />
       </Pannel>
       </div>);
   }
