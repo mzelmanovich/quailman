@@ -8,6 +8,7 @@ const authentication = (state = defaultState, action) => {
     break;
   default:
     state = defaultState;
+    break;
   }
   return state;
 };
