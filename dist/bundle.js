@@ -42863,50 +42863,6 @@ var GetRequest = function (_Component) {
           _react2.default.createElement(
             'span',
             { className: 'input-group-addon', id: 'basic-addon1' },
-            'Http + Host'
-          ),
-          _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Http + Host', 'aria-describedby': 'basic-addon1', onChange: this.onChangeHandler('httpAndHost') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          { className: 'input-group' },
-          _react2.default.createElement(
-            'span',
-            { className: 'input-group-addon', id: 'basic-addon1' },
-            'Uri Prefix'
-          ),
-          _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Uri Prefix', 'aria-describedby': 'basic-addon1', onChange: this.onChangeHandler('uriPrefix') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          { className: 'input-group' },
-          _react2.default.createElement(
-            'span',
-            { className: 'input-group-addon', id: 'basic-addon1' },
-            'Uri Suffix'
-          ),
-          _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Uri Suffix', 'aria-describedby': 'basic-addon1', onChange: this.onChangeHandler('uriSuffix') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          { className: 'input-group' },
-          _react2.default.createElement(
-            'span',
-            { className: 'input-group-addon', id: 'basic-addon1' },
-            'Param'
-          ),
-          _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Param', 'aria-describedby': 'basic-addon1', onChange: this.onChangeHandler('param') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          { className: 'input-group' },
-          _react2.default.createElement(
-            'span',
-            { className: 'input-group-addon', id: 'basic-addon1' },
             'Url'
           ),
           _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Url', 'aria-describedby': 'basic-addon1', value: this.state.url, onChange: this.onChangeHandler('url') })
@@ -43531,65 +43487,11 @@ var PutRequest = function (_Component) {
           _react2.default.createElement(
             'span',
             { className: 'input-group-addon', id: 'basic-addon1' },
-            'Http + Host'
-          ),
-          _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Http + Host', 'aria-describedby': 'basic-addon1', onChange: this.onChangeHandler('httpAndHost') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          { className: 'input-group' },
-          _react2.default.createElement(
-            'span',
-            { className: 'input-group-addon', id: 'basic-addon1' },
-            'Uri Prefix'
-          ),
-          _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Uri Prefix', 'aria-describedby': 'basic-addon1', onChange: this.onChangeHandler('uriPrefix') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          { className: 'input-group' },
-          _react2.default.createElement(
-            'span',
-            { className: 'input-group-addon', id: 'basic-addon1' },
-            'Uri Suffix'
-          ),
-          _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Uri Suffix', 'aria-describedby': 'basic-addon1', onChange: this.onChangeHandler('uriSuffix') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          { className: 'input-group' },
-          _react2.default.createElement(
-            'span',
-            { className: 'input-group-addon', id: 'basic-addon1' },
-            'Param'
-          ),
-          _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Param', 'aria-describedby': 'basic-addon1', onChange: this.onChangeHandler('param') })
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          { className: 'input-group' },
-          _react2.default.createElement(
-            'span',
-            { className: 'input-group-addon', id: 'basic-addon1' },
             'Url'
           ),
           _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Url', 'aria-describedby': 'basic-addon1', value: this.state.url, onChange: this.onChangeHandler('url') })
         ),
         _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          { className: 'input-group' },
-          _react2.default.createElement(
-            'span',
-            { className: 'input-group-addon', id: 'basic-addon1' },
-            'body'
-          ),
-          _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'body', 'aria-describedby': 'basic-addon1', value: this.state.body, onChange: this.onChangeHandler('body') })
-        ),
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'div',

@@ -51,7 +51,7 @@ class PutRequest extends Component{
   render(){
     return (
   <div className="col-xs-12 col-md-12 col-lg-12">
-    <div className="input-group">
+    {/*<div className="input-group">
   <span className="input-group-addon" id="basic-addon1">Http + Host</span>
    <input type="text" className="form-control" placeholder="Http + Host" aria-describedby="basic-addon1" onChange={this.onChangeHandler('httpAndHost')} />
   </div>
@@ -71,16 +71,16 @@ class PutRequest extends Component{
   <span className="input-group-addon" id="basic-addon1">Param</span>
      <input type="text" className="form-control" placeholder="Param" aria-describedby="basic-addon1" onChange={this.onChangeHandler('param')} />
   </div>
-  <br />
+  <br />*/}
           <div className="input-group">
   <span className="input-group-addon" id="basic-addon1">Url</span>
      <input type="text" className="form-control" placeholder="Url" aria-describedby="basic-addon1" value={this.state.url} onChange={this.onChangeHandler('url')} />
   </div>
   <br />
-            <div className="input-group">
+            {/*<div className="input-group">
   <span className="input-group-addon" id="basic-addon1">body</span>
      <input type="text" className="form-control" placeholder="body" aria-describedby="basic-addon1" value={this.state.body} onChange={this.onChangeHandler('body')} />
-  </div>
+  </div>*/}
   <br />
   <div className="text-center">
   <button type="button" className="btn btn-success" onClick={this.post}>Post</button>

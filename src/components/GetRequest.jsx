@@ -50,7 +50,7 @@ class GetRequest extends Component{
   render(){
     return (
   <div className="col-xs-12 col-md-12 col-lg-12">
-    <div className="input-group">
+    {/*<div className="input-group">
   <span className="input-group-addon" id="basic-addon1">Http + Host</span>
    <input type="text" className="form-control" placeholder="Http + Host" aria-describedby="basic-addon1" onChange={this.onChangeHandler('httpAndHost')} />
   </div>
@@ -70,7 +70,7 @@ class GetRequest extends Component{
   <span className="input-group-addon" id="basic-addon1">Param</span>
      <input type="text" className="form-control" placeholder="Param" aria-describedby="basic-addon1" onChange={this.onChangeHandler('param')} />
   </div>
-  <br />
+  <br />*/}
           <div className="input-group">
   <span className="input-group-addon" id="basic-addon1">Url</span>
      <input type="text" className="form-control" placeholder="Url" aria-describedby="basic-addon1" value={this.state.url} onChange={this.onChangeHandler('url')} />
