@@ -3,7 +3,7 @@ import PorkChop from './components/PorkChop.jsx';
 import {connect} from 'react-redux';
 const PorkChopList = ({porkchops}) => {
   return ( <div className="row">
-    {porkchops.map((chop, index) => (<PorkChop index={index} key={index} />))}
+    {porkchops.map((chop, index) => (<PorkChop index={index} key={index} chop={chop} />))}
   </div>);
 };
 
