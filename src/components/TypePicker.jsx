@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TypePicker = () => {
+const TypePicker = ({index}) => {
   return (
       <div className="col-xs-12 col-md-12col-lg-12 text-center">
         <div className="dropdown">

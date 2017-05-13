@@ -9,7 +9,7 @@ const PorkChop = ({index, chop}) => {
   if (chop.type === 'TypePicker'){
     return (<div className="col-xs-6 col-md-4 col-lg-4">
       <Pannel title={'Chop: ' + (index + 1)}>
-          <TypePicker />
+          <TypePicker index={index} />
       </Pannel>
       </div>);
   }
