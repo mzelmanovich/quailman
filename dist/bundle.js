@@ -36922,7 +36922,7 @@ var _reduxThunk = __webpack_require__(394);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _reducer = __webpack_require__(222);
+var _reducer = __webpack_require__(223);
 
 var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -43531,6 +43531,64 @@ Object.defineProperty(exports, "__esModule", {
 
 var _constants = __webpack_require__(40);
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var defaultState = [{
+  type: 'TypePicker',
+  result: null,
+  function: null
+}];
+
+
+var porkchops = function porkchops() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _constants.ADD_CHOP:
+      state = [].concat(_toConsumableArray(state), [{
+        type: 'TypePicker',
+        result: null,
+        function: null
+      }]);
+      break;
+    case _constants.ADD_RESULT:
+      state[action.index].result = action.result;
+      state[action.index] = Object.assign({}, state[action.index]);
+      state = [].concat(_toConsumableArray(state));
+      break;
+    case _constants.CHANGE_FUNCTION:
+      state[action.index].function = action.function;
+      state[action.index] = Object.assign({}, state[action.index]);
+      state = [].concat(_toConsumableArray(state));
+      break;
+    case _constants.CHANGE_PORK_TYPE:
+      state[action.index].type = action.porkType;
+      state[action.index] = Object.assign({}, state[action.index]);
+      state = [].concat(_toConsumableArray(state));
+      break;
+    default:
+      '';
+      break;
+  }
+  return state;
+};
+
+exports.default = porkchops;
+
+/***/ }),
+/* 222 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _constants = __webpack_require__(40);
+
 var defaultState = null;
 
 
@@ -43551,7 +43609,7 @@ var authentication = function authentication() {
 exports.default = authentication;
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43563,11 +43621,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(84);
 
-var _authentication = __webpack_require__(221);
+var _authentication = __webpack_require__(222);
 
 var _authentication2 = _interopRequireDefault(_authentication);
 
-var _PorkChops = __webpack_require__(405);
+var _PorkChops = __webpack_require__(221);
 
 var _PorkChops2 = _interopRequireDefault(_PorkChops);
 
@@ -43576,7 +43634,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = (0, _redux.combineReducers)({ authentication: _authentication2.default, porkchops: _PorkChops2.default });
 
 /***/ }),
-/* 223 */,
 /* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -72549,64 +72606,6 @@ function get_blob() {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)))
-
-/***/ }),
-/* 405 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _constants = __webpack_require__(40);
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-var defaultState = [{
-  type: 'TypePicker',
-  result: null,
-  function: null
-}];
-
-
-var porkchops = function porkchops() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
-  var action = arguments[1];
-
-  switch (action.type) {
-    case _constants.ADD_CHOP:
-      state = [].concat(_toConsumableArray(state), [{
-        type: 'TypePicker',
-        result: null,
-        function: null
-      }]);
-      break;
-    case _constants.ADD_RESULT:
-      state[action.index].result = action.result;
-      state[action.index] = Object.assign({}, state[action.index]);
-      state = [].concat(_toConsumableArray(state));
-      break;
-    case _constants.CHANGE_FUNCTION:
-      state[action.index].function = action.function;
-      state[action.index] = Object.assign({}, state[action.index]);
-      state = [].concat(_toConsumableArray(state));
-      break;
-    case _constants.CHANGE_PORK_TYPE:
-      state[action.index].type = action.porkType;
-      state[action.index] = Object.assign({}, state[action.index]);
-      state = [].concat(_toConsumableArray(state));
-      break;
-    default:
-      '';
-      break;
-  }
-  return state;
-};
-
-exports.default = porkchops;
 
 /***/ })
 /******/ ]);
