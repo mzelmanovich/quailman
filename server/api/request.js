@@ -39,7 +39,6 @@ const put = function put({url, authorization, body}){
 };
 
 const post = function post({url, authorization, body}){
-  console.log(body);
   const requestOptions = {
     url,
     method: 'POST',
