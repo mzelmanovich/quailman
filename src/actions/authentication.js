@@ -12,7 +12,7 @@ export const fetchOauth = (formObj) => dispatch => {
 };
 
 export const fetchBasic = (formObj) => dispatch => {
-  axios.post( '/api/auth/basic', formObj)
+  return axios.post( '/api/auth/basic', formObj)
   .then(({data}) => {
     dispatch(setAuth(data));
     return data;

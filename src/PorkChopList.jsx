@@ -1,13 +1,16 @@
 import React from 'react';
 import PorkChop from './components/PorkChop.jsx';
 import {connect} from 'react-redux';
-import {addChop, changeType, changeResult} from './actions/porkchops';
-import {fetchOauth} from './actions/authentication';
+import {addChop, changeType, changeResult, fetchAuthCode, fetchBasicCode} from './actions/porkchops';
+import {fetchOauth, fetchBasic} from './actions/authentication';
 const PorkChopList = ({porkchops, addChop, typeChange, auths}) => {
   const mappedChops =  porkchops.map((chop, index) => {
     let post = null;
     if (chop.type === 'Oauth'){
       post = auths.oauth(index);
+    }
+    if (chop.type === 'Basic'){
+      post = auths.basic(index);
     }
     return (<PorkChop index={index} key={index} chop={chop} selector={typeChange} post={post} />);
   });
@@ -37,6 +40,15 @@ const mapDispatchToProps = (dispatch) => ({
       event.preventDefault();
       dispatch(fetchOauth(formObj))
       .then(obj => {
+        dispatch(fetchAuthCode(index, 'oauth'));
+        dispatch(changeResult(index, obj));
+      });
+    },
+    basic: (index) => (formObj) => {
+      event.preventDefault();
+      dispatch(fetchBasic(formObj))
+      .then(obj => {
+        dispatch(fetchAuthCode(index, 'basic'));
         dispatch(changeResult(index, obj));
       });
     }

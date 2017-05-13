@@ -4,10 +4,9 @@ import {SET_AUTHENTICATION} from '../constants';
 const authentication = (state = defaultState, action) => {
   switch (action.type){
   case SET_AUTHENTICATION:
-    state = action.authObj;
+    state = Object.assign({}, action.authObj);
     break;
   default:
-    state = defaultState;
     break;
   }
   return state;

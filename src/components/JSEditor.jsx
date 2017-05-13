@@ -21,11 +21,18 @@ class JSEditor extends Component{
     this.editor.setOptions({minLines: 25});
     this.editor.setOptions({maxLines: 25});
     this.editor.setValue(this.props.startVal || 'Hello World');
+    this.editor.renderer.setShowGutter(false);
     this.editor.clearSelection();
   }
 
   componentWillUnmount(){
     this.editor.destroy();
+  }
+
+  componentDidUpdate(){
+    console.log(this.props.startVal);
+    this.editor.setValue(this.props.startVal || 'Hello World');
+    this.editor.clearSelection();
   }
 
   render(){
@@ -35,10 +42,9 @@ class JSEditor extends Component{
     };
 
     return (
-      <div className="col-xs-12 col-md-6 col-lg-6 text-center">
+      <div className="col-xs-12 col-md-12 col-lg-12 text-center">
         <div ref={(el) => {this.domEl = el;}}  />
           <br />
-        <button type="button" className="btn btn-success" onClick={exeFunction}>Execute</button>
       </div>
     );
   }

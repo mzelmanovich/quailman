@@ -27,9 +27,8 @@ class BasicForm extends Component{
   }
 
   render(){
-    const style = {outline: '3px solid blue'};
     return (
-  <div className="col-xs-12 col-md-3 col-lg-3" style={style}>
+  <div className="col-xs-12 col-md-12 col-lg-12">
     <div className="input-group">
   <span className="input-group-addon" id="basic-addon1">Username</span>
    <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1" onChange={this.onChangeHandler('Username')} />

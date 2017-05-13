@@ -32,7 +32,7 @@ const porkchops = (state = defaultState, action) => {
     state = [...state];
     break;
   default:
-    state = defaultState;
+    '';
     break;
   }
   return state;

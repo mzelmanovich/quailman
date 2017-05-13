@@ -14,6 +14,7 @@ class JSONViewer extends Component{
     const container = this.domEl;
     const options = {
       mode: this.props.mode || 'tree',
+      modes: ['code', 'form', 'text', 'tree', 'view'],
       ace,
       onChange: this.onChangeHandler.bind(this)
     };
@@ -40,7 +41,7 @@ class JSONViewer extends Component{
 
   render(){
     return (
-      <div className="col-xs-12 col-md-3 col-lg-3" style={{height: '400px'}}>
+      <div className="col-xs-12 col-md-12 col-lg-12">
         <div ref={(el) => this.domEl = el}  />
       </div>
     );

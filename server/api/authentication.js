@@ -40,7 +40,7 @@ router.post('/basic', (req, res) => {
   res.json(basic(req.body));
 });
 
-router.get('/basic', (req, res) => {
+router.get('/basic/function', (req, res) => {
   res.json({func: basic.toString()});
 });
 

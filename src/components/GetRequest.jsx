@@ -10,16 +10,24 @@ class GetRequest extends Component{
       uriPrefix: '',
       uriSuffix: '',
       param: '',
+      url: ''
     };
   }
 
   onChangeHandler(key){
     return (event) => {
-      event.preventDefault();
-      const val = event.target.value;
-      const obj = {};
-      obj[key] = val;
-      this.setState(obj);
+      if (key !== 'url'){
+        event.preventDefault();
+        const val = event.target.value;
+        const obj = {};
+        obj[key] = val;
+        this.setState(obj);
+        let url = this.state.httpAndHost + '/'  + this.state.uriPrefix + '/' + this.state.param + '/' + this.state.uriSuffix;
+        this.setState({url});
+      } else {
+        let url = event.target.value;
+        this.setState({url});
+      }
     };
   }
 
@@ -29,9 +37,8 @@ class GetRequest extends Component{
   }
 
   render(){
-    const style = {outline: '3px solid blue'};
     return (
-  <div className="col-xs-12 col-md-3 col-lg-3" style={style}>
+  <div className="col-xs-12 col-md-12 col-lg-12">
     <div className="input-group">
   <span className="input-group-addon" id="basic-addon1">Http + Host</span>
    <input type="text" className="form-control" placeholder="Http + Host<" aria-describedby="basic-addon1" onChange={this.onChangeHandler('httpAndHost')} />
@@ -51,6 +58,11 @@ class GetRequest extends Component{
         <div className="input-group">
   <span className="input-group-addon" id="basic-addon1">Param</span>
      <input type="text" className="form-control" placeholder="Param" aria-describedby="basic-addon1" onChange={this.onChangeHandler('param')} />
+  </div>
+  <br />
+          <div className="input-group">
+  <span className="input-group-addon" id="basic-addon1">Url</span>
+     <input type="text" className="form-control" placeholder="Url" aria-describedby="basic-addon1" value={this.state.url} onChange={this.onChangeHandler('url')} />
   </div>
   <br />
   <div className="text-center">
