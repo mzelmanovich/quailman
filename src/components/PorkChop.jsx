@@ -8,7 +8,7 @@ import GetRequest from './GetRequest.jsx';
 import PutRequest from './PutRquest.jsx';
 import Pannel from './Pannel.jsx';
 
-const PorkChop = ({index, chop, selector, post}) => {
+const PorkChop = ({index, chop, selector, post, body}) => {
 
   if (chop.type === 'TypePicker'){
     return (<div className="col-xs-6 col-md-6 col-lg-6">
@@ -29,8 +29,8 @@ const PorkChop = ({index, chop, selector, post}) => {
   if (chop.type === 'Get'){
     form = <GetRequest postFunc={post} />;
   }
-  if (chop.type === 'Put'){
-    form = <PutRequest postFunc={post} />;
+  if (chop.type === 'Post'){
+    form = <PutRequest postFunc={post} body={body} />;
   }
   return (<div className="col-xs-6 col-md-6 col-lg-6">
       <Pannel title={'Chop: ' + (index + 1)}>

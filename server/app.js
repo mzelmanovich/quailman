@@ -4,7 +4,7 @@ const favicon = require('serve-favicon');
 const app = express();
 const bodyParser = require('body-parser');
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use('/vendor', express.static(path.join(__dirname, '..', 'node_modules')));
 app.use('/dist', express.static(path.join(__dirname, '..', 'dist')));

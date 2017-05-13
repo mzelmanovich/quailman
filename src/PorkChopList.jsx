@@ -5,7 +5,7 @@ import {addChop, changeType, changeResult, fetchAuthCode, fetchRequestCode} from
 import {fetchOauth, fetchBasic} from './actions/authentication';
 import {makeRequest, setResp} from './actions/request';
 
-const PorkChopList = ({porkchops, addChop, typeChange, auths, requests, auth}) => {
+const PorkChopList = ({porkchops, addChop, typeChange, auths, requests, auth, body}) => {
   const mappedChops =  porkchops.map((chop, index) => {
     let post = null;
     if (chop.type === 'Oauth'){
@@ -20,6 +20,9 @@ const PorkChopList = ({porkchops, addChop, typeChange, auths, requests, auth}) =
     if (chop.type === 'Put'){
       post = requests.put(index, auth);
     }
+    if (chop.type === 'Post'){
+      post = requests.post(index, auth, body);
+    }
     return (<PorkChop index={index} key={index} chop={chop} selector={typeChange} post={post} />);
   });
   return (
@@ -33,7 +36,7 @@ const PorkChopList = ({porkchops, addChop, typeChange, auths, requests, auth}) =
   </div>);
 };
 
-const mapStateToProps = ({porkchops, authentication}) => ({porkchops, auth: authentication});
+const mapStateToProps = ({porkchops, authentication, lastResp}) => ({porkchops, auth: authentication, body: lastResp});
 const mapDispatchToProps = (dispatch) => ({
   addChop: (event) => {
     event.preventDefault();
@@ -67,6 +70,15 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch(makeRequest('get', {url, authorization}))
       .then(obj => {
         dispatch(fetchRequestCode(index, 'get'));
+        dispatch(changeResult(index, obj));
+        dispatch(setResp(obj));
+      });
+    },
+    post: (index, authorization, body) => (url) => {
+      event.preventDefault();
+      dispatch(makeRequest('post', {url, authorization, body}))
+      .then(obj => {
+        dispatch(fetchRequestCode(index, 'post'));
         dispatch(changeResult(index, obj));
         dispatch(setResp(obj));
       });

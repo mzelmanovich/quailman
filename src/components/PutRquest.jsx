@@ -11,7 +11,7 @@ class PutRequest extends Component{
       uriSuffix: '',
       param: '',
       url: '',
-      body: ''
+      body: this.props.body
     };
   }
 

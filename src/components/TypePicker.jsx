@@ -12,7 +12,7 @@ const TypePicker = ({index, selector}) => {
             <li className="divider" />
             <li className="dropdown-header">Requests</li>
             <li><a href="#" onClick={selector(index, 'Get')}>Get</a></li>
-            <li><a href="#" onClick={selector(index, 'Put')}>Put</a></li>
+            <li><a href="#" onClick={selector(index, 'Post')}>Post</a></li>
           </ul>
         </div>
       </div>

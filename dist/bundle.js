@@ -36819,7 +36819,8 @@ var PorkChopList = function PorkChopList(_ref) {
       typeChange = _ref.typeChange,
       auths = _ref.auths,
       requests = _ref.requests,
-      auth = _ref.auth;
+      auth = _ref.auth,
+      body = _ref.body;
 
   var mappedChops = porkchops.map(function (chop, index) {
     var post = null;
@@ -36834,6 +36835,9 @@ var PorkChopList = function PorkChopList(_ref) {
     }
     if (chop.type === 'Put') {
       post = requests.put(index, auth);
+    }
+    if (chop.type === 'Post') {
+      post = requests.post(index, auth, body);
     }
     return _react2.default.createElement(_PorkChop2.default, { index: index, key: index, chop: chop, selector: typeChange, post: post });
   });
@@ -36859,8 +36863,9 @@ var PorkChopList = function PorkChopList(_ref) {
 
 var mapStateToProps = function mapStateToProps(_ref2) {
   var porkchops = _ref2.porkchops,
-      authentication = _ref2.authentication;
-  return { porkchops: porkchops, auth: authentication };
+      authentication = _ref2.authentication,
+      lastResp = _ref2.lastResp;
+  return { porkchops: porkchops, auth: authentication, body: lastResp };
 };
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
@@ -36900,6 +36905,16 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
           event.preventDefault();
           dispatch((0, _request.makeRequest)('get', { url: url, authorization: authorization })).then(function (obj) {
             dispatch((0, _porkchops.fetchRequestCode)(index, 'get'));
+            dispatch((0, _porkchops.changeResult)(index, obj));
+            dispatch((0, _request.setResp)(obj));
+          });
+        };
+      },
+      post: function post(index, authorization, body) {
+        return function (url) {
+          event.preventDefault();
+          dispatch((0, _request.makeRequest)('post', { url: url, authorization: authorization, body: body })).then(function (obj) {
+            dispatch((0, _porkchops.fetchRequestCode)(index, 'post'));
             dispatch((0, _porkchops.changeResult)(index, obj));
             dispatch((0, _request.setResp)(obj));
           });
@@ -43329,7 +43344,8 @@ var PorkChop = function PorkChop(_ref) {
   var index = _ref.index,
       chop = _ref.chop,
       selector = _ref.selector,
-      post = _ref.post;
+      post = _ref.post,
+      body = _ref.body;
 
 
   if (chop.type === 'TypePicker') {
@@ -43355,8 +43371,8 @@ var PorkChop = function PorkChop(_ref) {
   if (chop.type === 'Get') {
     form = _react2.default.createElement(_GetRequest2.default, { postFunc: post });
   }
-  if (chop.type === 'Put') {
-    form = _react2.default.createElement(_PutRquest2.default, { postFunc: post });
+  if (chop.type === 'Post') {
+    form = _react2.default.createElement(_PutRquest2.default, { postFunc: post, body: body });
   }
   return _react2.default.createElement(
     'div',
@@ -43461,7 +43477,7 @@ var PutRequest = function (_Component) {
       uriSuffix: '',
       param: '',
       url: '',
-      body: ''
+      body: _this.props.body
     };
     return _this;
   }
@@ -43673,8 +43689,8 @@ var TypePicker = function TypePicker(_ref) {
           null,
           _react2.default.createElement(
             "a",
-            { href: "#", onClick: selector(index, 'Put') },
-            "Put"
+            { href: "#", onClick: selector(index, 'Post') },
+            "Post"
           )
         )
       )
