@@ -3,7 +3,7 @@ import PorkChop from './components/PorkChop.jsx';
 import {connect} from 'react-redux';
 import {addChop, changeType, changeResult, fetchAuthCode, fetchRequestCode} from './actions/porkchops';
 import {fetchOauth, fetchBasic} from './actions/authentication';
-import {makeRequest} from './actions/request';
+import {makeRequest, setResp} from './actions/request';
 
 const PorkChopList = ({porkchops, addChop, typeChange, auths, requests, auth}) => {
   const mappedChops =  porkchops.map((chop, index) => {
@@ -16,6 +16,9 @@ const PorkChopList = ({porkchops, addChop, typeChange, auths, requests, auth}) =
     }
     if (chop.type === 'Get'){
       post = requests.get(index, auth);
+    }
+    if (chop.type === 'Put'){
+      post = requests.put(index, auth);
     }
     return (<PorkChop index={index} key={index} chop={chop} selector={typeChange} post={post} />);
   });
@@ -49,7 +52,7 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(changeResult(index, obj));
       });
     },
-    basic: (index) => (url) => {
+    basic: (index) => (formObj) => {
       event.preventDefault();
       dispatch(fetchBasic(formObj))
       .then(obj => {
@@ -65,6 +68,16 @@ const mapDispatchToProps = (dispatch) => ({
       .then(obj => {
         dispatch(fetchRequestCode(index, 'get'));
         dispatch(changeResult(index, obj));
+        dispatch(setResp(obj));
+      });
+    },
+    put: (index, authorization) => (url) => {
+      event.preventDefault();
+      dispatch(makeRequest('put', {url, authorization}))
+      .then(obj => {
+        dispatch(fetchRequestCode(index, 'put'));
+        dispatch(changeResult(index, obj));
+        dispatch(setResp(obj));
       });
     }
   }

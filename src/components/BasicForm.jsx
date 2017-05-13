@@ -6,8 +6,8 @@ class BasicForm extends Component{
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.post = this.post.bind(this);
     this.state = {
-      Username: '',
-      Password: ''
+      username: '',
+      password: ''
     };
   }
 
@@ -31,12 +31,12 @@ class BasicForm extends Component{
   <div className="col-xs-12 col-md-12 col-lg-12">
     <div className="input-group">
   <span className="input-group-addon" id="basic-addon1">Username</span>
-   <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1" onChange={this.onChangeHandler('Username')} />
+   <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1" onChange={this.onChangeHandler('username')} />
   </div>
 <br />
     <div className="input-group">
   <span className="input-group-addon" id="basic-addon1">Password</span>
-     <input type="text" className="form-control" placeholder="Password" aria-describedby="basic-addon1" onChange={this.onChangeHandler('Password')} />
+     <input type="text" className="form-control" placeholder="Password" aria-describedby="basic-addon1" onChange={this.onChangeHandler('password')} />
   </div>
   <br />
   <div className="text-center">
