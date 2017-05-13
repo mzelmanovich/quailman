@@ -1,7 +1,7 @@
 import React from 'react';
 import PorkChop from './components/PorkChop.jsx';
 import {connect} from 'react-redux';
-import {addChop, changeType} from './actions/porkchops';
+import {addChop, changeType, changeResult} from './actions/porkchops';
 import {fetchOauth} from './actions/authentication';
 const PorkChopList = ({porkchops, addChop, typeChange, auths}) => {
   const mappedChops =  porkchops.map((chop, index) => {
@@ -35,7 +35,10 @@ const mapDispatchToProps = (dispatch) => ({
   auths: {
     oauth: (index) => (formObj) => {
       event.preventDefault();
-      dispatch(fetchOauth(formObj));
+      dispatch(fetchOauth(formObj))
+      .then(obj => {
+        dispatch(changeResult(index, obj));
+      });
     }
   }
 });
