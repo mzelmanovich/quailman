@@ -1,9 +1,11 @@
 import React from 'react';
 import PorkChop from './components/PorkChop.jsx';
 import {connect} from 'react-redux';
-import {addChop, changeType, changeResult, fetchAuthCode, fetchBasicCode} from './actions/porkchops';
+import {addChop, changeType, changeResult, fetchAuthCode, fetchRequestCode} from './actions/porkchops';
 import {fetchOauth, fetchBasic} from './actions/authentication';
-const PorkChopList = ({porkchops, addChop, typeChange, auths}) => {
+import {makeRequest} from './actions/request';
+
+const PorkChopList = ({porkchops, addChop, typeChange, auths, requests, auth}) => {
   const mappedChops =  porkchops.map((chop, index) => {
     let post = null;
     if (chop.type === 'Oauth'){
@@ -13,7 +15,7 @@ const PorkChopList = ({porkchops, addChop, typeChange, auths}) => {
       post = auths.basic(index);
     }
     if (chop.type === 'Get'){
-      post = auths.basic(index);
+      post = requests.get(index, auth);
     }
     return (<PorkChop index={index} key={index} chop={chop} selector={typeChange} post={post} />);
   });
@@ -28,7 +30,7 @@ const PorkChopList = ({porkchops, addChop, typeChange, auths}) => {
   </div>);
 };
 
-const mapStateToProps = ({porkchops}) => ({porkchops});
+const mapStateToProps = ({porkchops, authentication}) => ({porkchops, auth: authentication});
 const mapDispatchToProps = (dispatch) => ({
   addChop: (event) => {
     event.preventDefault();
@@ -47,11 +49,21 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(changeResult(index, obj));
       });
     },
-    basic: (index) => (formObj) => {
+    basic: (index) => (url) => {
       event.preventDefault();
       dispatch(fetchBasic(formObj))
       .then(obj => {
         dispatch(fetchAuthCode(index, 'basic'));
+        dispatch(changeResult(index, obj));
+      });
+    }
+  },
+  requests: {
+    get: (index, authorization) => (url) => {
+      event.preventDefault();
+      dispatch(makeRequest('get', {url, authorization}))
+      .then(obj => {
+        dispatch(fetchRequestCode(index, 'get'));
         dispatch(changeResult(index, obj));
       });
     }

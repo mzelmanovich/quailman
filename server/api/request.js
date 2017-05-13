@@ -4,20 +4,20 @@ const bluebird = require('bluebird');
 request = bluebird.promisify(request);
 
 const get = function get({url, authorization}){
-  const base64 = new Buffer(authorization.access_token).toString('base64');
   const requestOptions = {
     url,
-    headers: {
-      Authorization: `${authorization.type.toUpperCase()} ${base64}`
-    },
     method: 'GET'
   };
+  if (authorization){
+    requestOptions.headers = {Authorization: `${authorization.token_type.toUpperCase()} ${authorization.access_token}`};
+  }
+  console.log(requestOptions);
   return request(requestOptions)
-	.then(({body}) => JSON.parse(body));
+	.then(resp => JSON.parse(resp.body));
 };
 
 router.post('/get', (req, res) => {
-  get(req.body).then(({body}) => {
+  get(req.body).then((body) => {
     return res.json(body);
   })
   .catch(err => res.json({err: err}));

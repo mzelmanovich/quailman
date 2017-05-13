@@ -1,4 +1,4 @@
-const defaultState = {token_type: '', access_token: ''};
+const defaultState = null;
 import {SET_AUTHENTICATION} from '../constants';
 
 const authentication = (state = defaultState, action) => {

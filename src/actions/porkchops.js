@@ -13,3 +13,12 @@ export const fetchAuthCode = (index, type) => dispatch => {
     return data;
   });
 };
+
+
+export const fetchRequestCode = (index, type) => dispatch => {
+  return axios(`/api/request/${type.toLowerCase()}/function`)
+  .then(({data}) => {
+    dispatch(changeCode(index, data.func));
+    return data;
+  });
+};

@@ -44,7 +44,7 @@ class GetRequest extends Component{
 
   post(){
     const func = this.props.postFunc || (() => {});
-    func(this.state);
+    func(this.state.url);
   }
 
   render(){
