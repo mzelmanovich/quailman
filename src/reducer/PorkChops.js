@@ -29,7 +29,6 @@ const porkchops = (state = defaultState, action) => {
   case CHANGE_PORK_TYPE:
     state[action.index].type = action.porkType;
     state[action.index] = Object.assign({}, state[action.index]);
-    console.log(state);
     state = [...state];
     break;
   default:

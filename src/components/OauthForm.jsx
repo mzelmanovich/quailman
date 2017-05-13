@@ -22,15 +22,15 @@ class OauthForm extends Component{
     };
   }
 
-  post(){
+  post(event){
+    event.preventDefault();
     const func = this.props.postFunc || (() => {});
     func(this.state);
   }
 
   render(){
-    const style = {outline: '3px solid blue'};
     return (
-  <div className="col-xs-12 col-md-3 col-lg-3" style={style}>
+  <div>
 
   <div className="input-group">
   <span className="input-group-addon" id="basic-addon1">url</span>

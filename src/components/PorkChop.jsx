@@ -2,9 +2,10 @@ import React from 'react';
 import JSeditor from './JSEditor.jsx';
 import  JSONViewer from './JSONViewer.jsx';
 import TypePicker from './TypePicker.jsx';
+import OauthForm from './OauthForm.jsx';
 import Pannel from './Pannel.jsx';
 
-const PorkChop = ({index, chop, selector}) => {
+const PorkChop = ({index, chop, selector, post}) => {
 
   if (chop.type === 'TypePicker'){
     return (<div className="col-xs-6 col-md-4 col-lg-4">
@@ -12,6 +13,11 @@ const PorkChop = ({index, chop, selector}) => {
           <TypePicker index={index} selector={selector} />
       </Pannel>
       </div>);
+  }
+
+  let form = null;
+  if (chop.type === 'Oauth'){
+    form = <OauthForm postFunc={post} />;
   }
   return (<div className="col-xs-6 col-md-4 col-lg-4">
       <Pannel title={'Chop: ' + (index + 1)}>
@@ -22,7 +28,7 @@ const PorkChop = ({index, chop, selector}) => {
   </ul>
 
   <div className="tab-content" style={{height: '400px'}}>
-    <div role="tabpanel" className="tab-pane fade in active" id={`inputs${index}`}><p>inputs</p></div>
+    <div role="tabpanel" className="tab-pane fade in active" id={`inputs${index}`}>{form}</div>
     <div role="tabpanel" className="tab-pane fade" id={`code${index}`}><p>code</p></div>
     <div role="tabpanel" className="tab-pane fade" id={`result${index}`}><p>result</p></div>
   </div>

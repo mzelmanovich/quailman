@@ -2,11 +2,19 @@ import React from 'react';
 import PorkChop from './components/PorkChop.jsx';
 import {connect} from 'react-redux';
 import {addChop, changeType} from './actions/porkchops';
-const PorkChopList = ({porkchops, addChop, typeChange}) => {
+import {fetchOauth} from './actions/authentication';
+const PorkChopList = ({porkchops, addChop, typeChange, auths}) => {
+  const mappedChops =  porkchops.map((chop, index) => {
+    let post = null;
+    if (chop.type === 'Oauth'){
+      post = auths.oauth(index);
+    }
+    return (<PorkChop index={index} key={index} chop={chop} selector={typeChange} post={post} />);
+  });
   return (
   <div>
   <div className="row">
-    {porkchops.map((chop, index) => (<PorkChop index={index} key={index} chop={chop} selector={typeChange} />))}
+    {mappedChops}
      </div>
     <div className="row">
    <button type="button" className="btn btn-success" onClick={addChop}>Add Chop</button>
@@ -23,6 +31,12 @@ const mapDispatchToProps = (dispatch) => ({
   typeChange: (index, type) => (event) => {
     event.preventDefault();
     dispatch(changeType(index, type));
+  },
+  auths: {
+    oauth: (index) => (formObj) => {
+      event.preventDefault();
+      dispatch(fetchOauth(formObj));
+    }
   }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(PorkChopList);
