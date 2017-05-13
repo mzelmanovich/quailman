@@ -12,6 +12,9 @@ const PorkChopList = ({porkchops, addChop, typeChange, auths}) => {
     if (chop.type === 'Basic'){
       post = auths.basic(index);
     }
+    if (chop.type === 'Get'){
+      post = auths.basic(index);
+    }
     return (<PorkChop index={index} key={index} chop={chop} selector={typeChange} post={post} />);
   });
   return (

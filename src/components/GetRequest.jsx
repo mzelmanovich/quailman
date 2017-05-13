@@ -21,9 +21,20 @@ class GetRequest extends Component{
         const val = event.target.value;
         const obj = {};
         obj[key] = val;
+        let state = this.state;
+        state[key] = val;
+        let url = this.state.httpAndHost;
+        if (state.uriPrefix.length > 0){
+          url = url + '/'  + state.uriPrefix;
+        }
+        if (state.param.length > 0){
+          url = url + '/'  + state.param;
+        }
+        if (state.uriSuffix.length > 0){
+          url = url + '/'  + state.uriSuffix;
+        }
+        obj.url = url;
         this.setState(obj);
-        let url = this.state.httpAndHost + '/'  + this.state.uriPrefix + '/' + this.state.param + '/' + this.state.uriSuffix;
-        this.setState({url});
       } else {
         let url = event.target.value;
         this.setState({url});
@@ -41,7 +52,7 @@ class GetRequest extends Component{
   <div className="col-xs-12 col-md-12 col-lg-12">
     <div className="input-group">
   <span className="input-group-addon" id="basic-addon1">Http + Host</span>
-   <input type="text" className="form-control" placeholder="Http + Host<" aria-describedby="basic-addon1" onChange={this.onChangeHandler('httpAndHost')} />
+   <input type="text" className="form-control" placeholder="Http + Host" aria-describedby="basic-addon1" onChange={this.onChangeHandler('httpAndHost')} />
   </div>
 <br />
     <div className="input-group">

@@ -4,6 +4,7 @@ import  JSONViewer from './JSONViewer.jsx';
 import TypePicker from './TypePicker.jsx';
 import OauthForm from './OauthForm.jsx';
 import BasicForm from './BasicForm.jsx';
+import GetRequest from './GetRequest.jsx';
 import Pannel from './Pannel.jsx';
 
 const PorkChop = ({index, chop, selector, post}) => {
@@ -23,6 +24,9 @@ const PorkChop = ({index, chop, selector, post}) => {
 
   if (chop.type === 'Oauth'){
     form = <OauthForm postFunc={post} />;
+  }
+  if (chop.type === 'Get'){
+    form = <GetRequest postFunc={post} />;
   }
   return (<div className="col-xs-6 col-md-6 col-lg-6">
       <Pannel title={'Chop: ' + (index + 1)}>
