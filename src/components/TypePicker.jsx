@@ -2,7 +2,7 @@ import React from 'react';
 
 const TypePicker = () => {
   return (
-      <div className="col-xs-12 col-md-12col-lg-12">
+      <div className="col-xs-12 col-md-12col-lg-12 text-center">
         <div className="dropdown">
           <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{`Pork Chop Type `}<span className="caret" /></button>
           <ul className="dropdown-menu">

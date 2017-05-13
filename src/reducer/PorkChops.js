@@ -3,6 +3,16 @@ const defaultState = [
     type: 'TypePicker',
     result: null,
     function: null
+  },
+  {
+    type: 'TypePicker',
+    result: null,
+    function: null
+  },
+  {
+    type: 'TypePicker',
+    result: null,
+    function: null
   }
 ];
 import {ADD_CHOP, ADD_RESULT, CHANGE_FUNCTION, CHANGE_PORK_TYPE} from '../constants';

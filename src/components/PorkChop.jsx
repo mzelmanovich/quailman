@@ -2,12 +2,15 @@ import React from 'react';
 import JSeditor from './JSEditor.jsx';
 import  JSONViewer from './JSONViewer.jsx';
 import TypePicker from './TypePicker.jsx';
+import Pannel from './Pannel.jsx';
 
 const PorkChop = ({index, chop}) => {
 
   if (chop.type === 'TypePicker'){
     return (<div className="col-xs-6 col-md-4 col-lg-4">
-      <TypePicker />
+      <Pannel title={'Chop: ' + (index + 1)}>
+          <TypePicker />
+      </Pannel>
       </div>);
   }
   return (<div className="col-xs-6 col-md-4 col-lg-4">
